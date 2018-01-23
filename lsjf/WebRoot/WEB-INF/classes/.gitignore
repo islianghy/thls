@@ -1,0 +1,11 @@
+/UserMapper.xml
+/applicationContext-ehcache.xml
+/applicationContext-quartz.xml
+/applicationContext.xml
+/com
+/context-dispatcher.xml
+/ehcache.xml
+/jdbc.properties
+/log4j.xml
+/mbg.xml
+/mybatis-config.xml
