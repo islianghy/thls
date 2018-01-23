@@ -62,6 +62,7 @@
   	</error-page> -->
 
 	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.do</welcome-file>
 	</welcome-file-list>
 	
