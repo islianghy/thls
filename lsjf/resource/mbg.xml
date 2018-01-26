@@ -2,44 +2,58 @@
 <!DOCTYPE generatorConfiguration
   PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
 <generatorConfiguration>
+  <!-- 指定数据库驱动包 -->
+  <classPathEntry location="D:\workspace10\Code\lib\mysql-connector-java-5.1.7-bin.jar" />
 
-	<context id="DB2Tables" targetRuntime="MyBatis3">
-		<commentGenerator>
-			<property name="suppressAllComments" value="true" />
-		</commentGenerator>
-		<!-- 配置数据库连接 -->
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/p2b" userId="root"
-			password="123456">
-		</jdbcConnection>
+  <!-- 指定链接参数 -->
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://192.168.1.200:3306/p2b"
+        userId="root"
+        password="123456">
+    </jdbcConnection>
 
-		<javaTypeResolver>
-			<property name="forceBigDecimals" value="false" />
-		</javaTypeResolver>
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
 
-		<!-- 指定javaBean生成的位置 -->
-		<javaModelGenerator targetPackage="com.p2p.entity"
-			targetProject=".\src">
-			<property name="enableSubPackages" value="true" />
-			<property name="trimStrings" value="true" />
-		</javaModelGenerator>
+    <!-- 实体类定义，指定生成项目和包路径 -->
+    <javaModelGenerator targetPackage="com.p2b.front.entity" targetProject=".\src">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
 
-		<!--指定sql映射文件生成的位置 -->
-		<sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
-			<property name="enableSubPackages" value="true" />
-		</sqlMapGenerator>
+	<!-- 注解方式 -->
+	<!-- SQL文件XML定义，指定生成项目和包路径
+    <sqlMapGenerator targetPackage="cn.p2b.dao"  targetProject=".\src">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator> -->
+	
+	<!-- Mapper映射器定义
+    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="cn.p2b.dao"  targetProject=".\src">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator> -->
+	
+	
+	
+	<!--指定sql映射文件生成的位置 -->
+	<sqlMapGenerator targetPackage="config" targetProject=".\">
+		<property name="enableSubPackages" value="true" />
+	</sqlMapGenerator>
 
-		<!-- 指定dao接口生成的位置，mapper接口 -->
-		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.xdl.p2p.front.bmoney.service" targetProject=".\src\main\java">
-			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator>
+	<!-- 指定dao接口生成的位置，mapper接口 -->
+	<javaClientGenerator type="XMLMAPPER"
+		targetPackage="com.p2b.front.dao" targetProject=".\src">
+		<property name="enableSubPackages" value="true" />
+	</javaClientGenerator>
+		
+		
+	<!-- 指定哪些表参与生成 -->
+    <table  tableName="%" enableDeleteByExample="false" enableCountByExample="false" 
+    	enableSelectByExample="false" enableUpdateByExample="false">
+    </table>
 
-
-		<!-- table指定每个表的生成策略 -->
-		<!-- <table tableName="p2p_userManger" domainObjectName="UserManger"></table> --><!-- 后台用户表 -->
-		<!-- <table tableName="p2p_user" domainObjectName="User"></table> --><!-- 前台用户表 -->
-		<table tableName="p2p_test" domainObjectName="Test"></table>
-	</context>
+  </context>
 </generatorConfiguration>

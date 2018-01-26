@@ -7,8 +7,17 @@
 <title>查询用户</title>
 </head>
 <body>
-<form action="list.do" method="post">
-<input type="submit" value="提交">
-</form>
+	<form action="http://localhost:8080/lsjf/realNameVerPicUp.do" method="post" enctype="multipart/form-data">  
+        选择文件:<input type="file" name="frontPhoto" width="120px">
+		 <input type="file" name="backPhoto" width="120px">  
+        <input type="submit" value="上传">  
+    </form>  
+    <hr>  
+    <form action="http://localhost:8080/lsjf/reserveDown.do" method="post">  
+        <input type="submit" value="下载">  
+    </form>  
+	<form action="list.do" method="post">
+		<input type="submit" value="提交">
+	</form>
 </body>
 </html>
